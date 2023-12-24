@@ -115,4 +115,5 @@ class CustomDataset(Dataset):
             instance_bboxes[i] = np.array([ymin, xmin, ymax, xmax])
             i+=1
             
+        class_ids = np.array(class_ids, dtype=np.int32)
         return instance_bboxes, class_ids
