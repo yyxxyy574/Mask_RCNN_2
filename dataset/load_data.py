@@ -62,8 +62,8 @@ class CustomConfig(Config):
         "rpn_bbox_loss": 1.,
         "mrcnn_class_loss": 1.,
         "mrcnn_bbox_loss": 1.,
-        "mrcnn_mask_loss": 1.
-    }
+        "mrcnn_mask_loss": 0.
+    } # Set the wight of mrcnn_mask_loss to 0
     USE_RPN_ROIS = True
     TRAIN_BN = False
     GRADIENT_CLIP_NORM = 5.0 # Gradient norm clipping
