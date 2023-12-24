@@ -684,17 +684,24 @@ class DetectionTargetLayer(KE.Layer):
         proposals = inputs[0]
         gt_class_ids = inputs[1]
         gt_boxes = inputs[2]
-        
+        '''
         gt_masks = inputs[3]
         '''
         gt_masks = [] #modified
-        '''
 
         # Slice the batch and run a graph for each slice
         # TODO: Rename target_bbox to target_deltas for clarity
+        '''
         names = ["rois", "target_class_ids", "target_bbox", "target_mask"]
         outputs = utils.batch_slice(
             [proposals, gt_class_ids, gt_boxes, gt_masks],
+            lambda w, x, y, z: detection_targets_graph(
+                w, x, y, z, self.config),
+            self.config.IMAGES_PER_GPU, names=names)
+        '''
+        names = ["rois", "target_class_ids", "target_bbox"]
+        outputs = utils.batch_slice(
+            [proposals, gt_class_ids, gt_boxes],
             lambda w, x, y, z: detection_targets_graph(
                 w, x, y, z, self.config),
             self.config.IMAGES_PER_GPU, names=names)
