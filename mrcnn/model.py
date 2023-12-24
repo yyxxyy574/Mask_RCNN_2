@@ -684,10 +684,11 @@ class DetectionTargetLayer(KE.Layer):
         proposals = inputs[0]
         gt_class_ids = inputs[1]
         gt_boxes = inputs[2]
-        '''
+        
         gt_masks = inputs[3]
         '''
         gt_masks = [] #modified
+        '''
 
         # Slice the batch and run a graph for each slice
         # TODO: Rename target_bbox to target_deltas for clarity
