@@ -500,10 +500,7 @@ def overlaps_graph(boxes1, boxes2):
     overlaps = tf.reshape(iou, [tf.shape(input=boxes1)[0], tf.shape(input=boxes2)[0]])
     return overlaps
 
-'''
 def detection_targets_graph(proposals, gt_class_ids, gt_boxes, gt_masks, config):
-'''
-def detection_targets_graph(proposals, gt_class_ids, gt_boxes, config): # modified
     """Generates detection targets for one image. Subsamples proposals and
     generates target class IDs, bounding box deltas, and masks for each.
 
