@@ -2199,9 +2199,14 @@ class MaskRCNN(object):
             lr=learning_rate, momentum=momentum,
             clipnorm=self.config.GRADIENT_CLIP_NORM)
         # Add Losses
+        '''
         loss_names = [
             "rpn_class_loss",  "rpn_bbox_loss",
             "mrcnn_class_loss", "mrcnn_bbox_loss", "mrcnn_mask_loss"]
+        '''
+        loss_names = [
+            "rpn_class_loss",  "rpn_bbox_loss",
+            "mrcnn_class_loss", "mrcnn_bbox_loss"]
         for name in loss_names:
             layer = self.keras_model.get_layer(name)
             if layer.output in self.keras_model.losses:
