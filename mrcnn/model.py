@@ -500,8 +500,10 @@ def overlaps_graph(boxes1, boxes2):
     overlaps = tf.reshape(iou, [tf.shape(input=boxes1)[0], tf.shape(input=boxes2)[0]])
     return overlaps
 
-
+'''
 def detection_targets_graph(proposals, gt_class_ids, gt_boxes, gt_masks, config):
+'''
+def detection_targets_graph(proposals, gt_class_ids, gt_boxes, config): # modified
     """Generates detection targets for one image. Subsamples proposals and
     generates target class IDs, bounding box deltas, and masks for each.
 
@@ -702,8 +704,8 @@ class DetectionTargetLayer(KE.Layer):
         names = ["rois", "target_class_ids", "target_bbox"]
         outputs = utils.batch_slice(
             [proposals, gt_class_ids, gt_boxes],
-            lambda w, x, y, z: detection_targets_graph(
-                w, x, y, z, self.config),
+            lambda w, x, y: (
+                w, x, y, self.config),
             self.config.IMAGES_PER_GPU, names=names)
         return outputs
 
