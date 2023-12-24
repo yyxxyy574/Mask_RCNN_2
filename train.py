@@ -48,7 +48,7 @@ dataset_val.prepare()
 image_ids = np.random.choice(dataset_train.image_ids, 4)
 for image_id in image_ids:
     original_image, image_meta, gt_class_id, gt_bbox, gt_mask = \
-    modelib.load_image_gt(dataset_train, config, image_id, use_mini_mask=False)
+    modelib.load_image_gt(dataset_train, config, image_id)
     visualize.display_instances(original_image, gt_bbox, gt_mask, gt_class_id, dataset_train.class_names, figsize=(8, 8))
 
 # Create model in tranining mode
@@ -91,7 +91,7 @@ model.load_weights(model_path, by_name=True)
 # Test on a random image
 image_id = random.choice(dataset_val.image_ids)
 original_image, image_meta, gt_class_id, gt_bbox, gt_mask = \
-    modelib.load_image_gt(dataset_val, inference_config, image_id, use_mini_mask=False)
+    modelib.load_image_gt(dataset_val, inference_config, image_id)
 visualize.display_instances(original_image, gt_bbox, gt_mask, gt_class_id, dataset_train.class_names, figsize=(8, 8))
 
 results = model.detect([original_image], verbose=1)
@@ -104,7 +104,7 @@ image_ids = np.random.chocie(dataset_val.image_ids, 10)
 APs = []
 for imaga_id in image_ids:
     original_image, image_meta, gt_class_id, gt_bbox, gt_mask = \
-        modelib.load_image_gt(dataset_val, inference_config, image_id, use_mini_mask=False)
+        modelib.load_image_gt(dataset_val, inference_config, image_id)
 
     results = model.detect([original_image], verbose=1)
     r = results[0]
