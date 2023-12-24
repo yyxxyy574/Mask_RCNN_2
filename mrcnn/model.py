@@ -2041,6 +2041,7 @@ class MaskRCNN(object):
                                               config.NUM_CLASSES,
                                               train_bn=config.TRAIN_BN)
             '''
+            mrcnn_mask = [] #modified
 
             # TODO: clean up (use tf.identify if necessary)
             output_rois = KL.Lambda(lambda x: x * 1, name="output_rois")(rois)
