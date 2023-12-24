@@ -99,10 +99,12 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     """
     # Number of instances
     N = boxes.shape[0]
+    '''
     if not N:
         print("\n*** No instances to display *** \n")
     else:
         assert boxes.shape[0] == masks.shape[-1] == class_ids.shape[0]
+    '''
 
     # If no axis is passed, create one and automatically call show()
     auto_show = False
@@ -145,7 +147,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             caption = captions[i]
         ax.text(x1, y1 + 8, caption,
                 color='w', size=11, backgroundcolor="none")
-
+        '''
         # Mask
         mask = masks[:, :, i]
         if show_mask:
@@ -162,6 +164,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             verts = np.fliplr(verts) - 1
             p = Polygon(verts, facecolor="none", edgecolor=color)
             ax.add_patch(p)
+        '''
     ax.imshow(masked_image.astype(np.uint8))
     if auto_show:
         plt.show()
