@@ -10,7 +10,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 # Root directory of the project
-ROOT_DIR = os.path.abspath("/home/stu7/prml23/Mask_RCNN")
+ROOT_DIR = os.path.abspath("/home/stu7/prml23/Mask_RCNN_2")
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)
